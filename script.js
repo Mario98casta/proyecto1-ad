@@ -8,6 +8,7 @@ const searchIcon = document.getElementById("search-icon");
 const searchInput = document.getElementById("search-input");
 
 
+
 const responsiveY = ()=>{
     if(window.innerHeight<=362){
         if(menuOpciones.classList.contains("mostrar"))
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       if (response.status === 200) {
         alert('Inicio de sesión exitoso');
-        window.location.href = 'Sabor_chapin.html';
+        window.location.href = 'index.html';
       } else {
         alert('Credenciales incorrectasss');
       }
