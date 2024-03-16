@@ -27,6 +27,8 @@ db.connect((err) => {
   }
 });
 
+
+
 // Ruta para servir archivos estáticos (como las imágenes)
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -101,10 +103,6 @@ app.post('/iniciar-sesion', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
-});
-
 // Ruta para obtener datos de productos desde la base de datos
 app.get('/productos', (req, res) => {
   // Consulta SQL para obtener los productos desde la base de datos
@@ -129,6 +127,12 @@ app.get('/productos', (req, res) => {
     }
   });  
 });
+
+
+app.listen(port, () => {
+  console.log(`Servidor escuchando en el puerto ${port}`);
+});
+
 
 
 
