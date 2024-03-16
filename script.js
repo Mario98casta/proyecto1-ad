@@ -167,42 +167,43 @@ function cargarTarjetas() {
     fetch('/productos')
       .then(response => response.json())
       .then(productos => {
-        const container = document.querySelector('.container__card');
-  
-        productos.forEach(producto => {
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.innerHTML = `
-              <div class="icon">
-                <img src="${producto.imagen}" height="150px">
-              </div>
-              <div class="info__description">
-                <h2>${producto.nombre}</h2>
-                <p>${producto.descripcion}</p>
-                <p class="price">Precio: Q${producto.precio}</p>
-                <p>Cantidad Disponible: ${producto.cantidad_disponible}</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-              </div>
-            `;
-          
-            container.appendChild(card);
-          
-            // Verifica si el botón se está seleccionando correctamente
-            const btnAddToCart = card.querySelector('.btn-add-cart');
-            console.log(btnAddToCart); // Agrega esta línea para verificar si obtienes el botón
-          
-        
-        
-          // Agregar un evento de clic al botón "Añadir al carrito"
-          console.log("Agregando evento de clic al botón");
-            btnAddToCart.addEventListener('click', () => {
-                
-        });
-
-        });
+        // Verificar si la respuesta contiene datos válidos
+        if (productos && Array.isArray(productos)) {
+          const container = document.querySelector('.container__card');
+    
+          // Iterar sobre cada producto y crear la tarjeta correspondiente
+          productos.forEach(producto => {
+              const card = document.createElement('div');
+              card.classList.add('card');
+              card.innerHTML = `
+                <div class="icon">
+                  <img src="${producto.imagen}" height="150px">
+                </div>
+                <div class="info__description">
+                  <h2>${producto.nombre}</h2>
+                  <p>${producto.descripcion}</p>
+                  <p class="price">Precio: Q${producto.precio}</p>
+                  <p>Cantidad Disponible: ${producto.cantidad_disponible}</p>
+                  <button class="btn-add-cart">Añadir al carrito</button>
+                </div>
+              `;
+            
+              container.appendChild(card);
+            
+              // Agregar un evento de clic al botón "Añadir al carrito"
+              const btnAddToCart = card.querySelector('.btn-add-cart');
+              btnAddToCart.addEventListener('click', () => {
+                  // Aquí puedes agregar la lógica para manejar el evento de clic
+              });
+          });
+        } else {
+          // Manejar el caso de una respuesta no válida
+          console.error('La respuesta del servidor no es válida:', productos);
+        }
       })
-      .catch(error => console.error(error));
-  }
+      .catch(error => console.error('Error al obtener datos de productos:', error));
+}
+
   
 
 //**************************************************************************** */

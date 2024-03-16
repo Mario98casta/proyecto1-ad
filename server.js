@@ -6,8 +6,9 @@ const bcrypt = require('bcrypt');
 
 
 
+
 const app = express();
-const port = 3000;
+const port = 5500;
 
 
 // Configura la conexión a la base de datos de Amazon RDS
@@ -105,7 +106,6 @@ app.post('/iniciar-sesion', (req, res) => {
 
 // Ruta para obtener datos de productos desde la base de datos
 app.get('/productos', (req, res) => {
-  // Consulta SQL para obtener los productos desde la base de datos
   const sql = 'SELECT * FROM producto';
 
   db.query(sql, (err, results) => {
@@ -113,20 +113,25 @@ app.get('/productos', (req, res) => {
       console.error('Error en la consulta SQL: ' + err.message);
       res.status(500).json({ error: 'Error al obtener productos' });
     } else {
-      // Asegúrate de que cada producto tenga una ruta de imagen válida
-      results.forEach(producto => {
-        if (producto.imagen && producto.imagen.length > 0) {
-          // Convierte el Buffer a una URL de datos (data URL)
-          producto.imagen = 'data:image/png;base64,' + producto.imagen.toString('base64');
-        } else {
-          
-          producto.imagen = 'img/sabor_chapin_logo.png'; 
-        }
-      });
-      res.json(results);
+      // Asegúrate de que la respuesta sea un array de objetos JSON
+      if (Array.isArray(results) && results.every(item => typeof item === 'object')) {
+        // Convierte los datos de imagen si es necesario
+        results.forEach(producto => {
+          if (producto.imagen && producto.imagen.length > 0) {
+            producto.imagen = 'data:image/png;base64,' + producto.imagen.toString('base64');
+          } else {
+            producto.imagen = ''; // Otra opción en caso de no haber imagen
+          }
+        });
+        res.json(results);
+      } else {
+        console.error('La respuesta de la base de datos no es un array de objetos JSON válido');
+        res.status(500).json({ error: 'Error al obtener productos' });
+      }
     }
   });  
 });
+
 
 
 app.listen(port, () => {
