@@ -3,6 +3,8 @@ const mysql = require("mysql2");
 const bodyParser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
+
 
 
 
@@ -45,6 +47,11 @@ app.get("/", (req, res) => {
 // Middleware para procesar datos del formulario
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cors());
+app.use(cors({
+  origin: 'appsaborchapin.azurewebsites.net'
+}));
 
 // Ruta para registrar un nuevo usuario
 app.post('/registrar-usuario', async (req, res) => {
