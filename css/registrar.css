@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--background-color);
+    background-size: cover;
+    font-family: 'Roboto Condensed', sans-serif;
+    height: 100vh;
+    }
+    .Loginbox{
+        width: 320px;
+        height: 480px;
+        border: 3px solid #ffffffee;
+        background: #ffffffd5;
+        backdrop-filter: blur(2px);
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    .Loginbox .LogoEmpresa{
+    width: 100px;
+    height: 100px;
+    border-radius: 55%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    
+    }
+    .Loginbox h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+    
+    .Loginbox label{
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        display: block;
+        color: #000;
+    }
+    .Loginbox input{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .Loginbox input::placeholder{
+        color: #000;
+    }
+    .Loginbox input[type="text"],
+    .Loginbox input[type="password"]{
+        border: none;
+        border-bottom: 1px solid #000;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #000;
+        font-size: 16px;
+    }
+    .Loginbox input[type="text"]:focus,
+    .Loginbox input[type="password"]:focus{
+        border-bottom: 2px solid #000;
+    }
+    
+    
+    
+    
+    .Loginbox input[type="submit"]{
+        border: 3px solid #000;
+        outline: none;
+        height: 40px;
+        background: none;
+        font-size: 18px;
+        border-radius: 20px;
+    }
+    .Loginbox input:hover[type="submit"]{
+        color: rgba(252, 145, 6, 0.74);
+    }
+    
+    .Loginbox a{
+        text-decoration: none;
+        font-size: 13px;
+        line-height: 20px;
+        color: rgb(8, 8, 8);
+        margin: 8px;    
+    }
+    .Loginbox a:hover{
+        color: rgba(252, 145, 6, 0.74);
+    }
+    
+    
+    /*fotter*/
+    footer{
+        
+        text-align: center;
+        background-color: black;
+        padding:10px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .copyright{
+        color:#FFFFFF;
+        font-size: 5px;
+        margin:5px;
+    }
+    .buttons {
+        min-width: 200px;
+        display: flex;
+        justify-content: center ;
+        padding: 5px;
+        
+      }
+      
+      .buttons a {
+        text-decoration: none;
+        font-size: 10px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        background: #ffffff;
+        color: #000000;
+        border-radius: 50%;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+        transition: all .4s ease-in-out;
+        margin-left: 5px;
+        margin-right: 05px;
+        
+      }
+      
+      .buttons a:hover {
+        transform: scale(1.2);
+      }
