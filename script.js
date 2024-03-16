@@ -9,17 +9,19 @@ const searchInput = document.getElementById("search-input");
 
 
 
-const responsiveY = ()=>{
-    if(window.innerHeight<=362){
-        if(menuOpciones.classList.contains("mostrar"))
+const responsiveY = () => {
+    if (window.innerHeight <= 362) {
+        if (menuOpciones.classList.contains("mostrar")) {
             menuOpciones.classList.add("min");
-        else
+        } else {
             menuOpciones.classList.remove("min");
-    }
-    else{
+        }
+    } else {
         menuOpciones.classList.remove("min");
     }
 };
+
+
 const responsive = ()=>{
     if(window.innerWidth<=865){
         menuOpciones.children[0].appendChild(btnSignUp);
